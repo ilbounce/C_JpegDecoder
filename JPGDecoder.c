@@ -46,7 +46,7 @@ static void DefineQuantizationTables(char** chunk, int chunk_size, JPEG** jpeg)
 		(*jpeg)->quant = (unsigned int**)realloc((*jpeg)->quant, (table_num + 1) * sizeof(unsigned int*));
 		(*jpeg)->quant[table_num] = (unsigned int*)malloc(64 * sizeof(unsigned int));
 		for (register size_t i = iter; i < iter + 64; i++) {
-			(*jpeg)->quant[table_num][i - iter] = (*chunk)[i + 1];
+			(*jpeg)->quant[table_num][i - iter] = (unsigned char)(*chunk)[i + 1];
 		}
 		iter += 65;
 	}
